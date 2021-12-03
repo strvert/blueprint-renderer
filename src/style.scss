@@ -1,0 +1,14 @@
+body {
+  background-color: black;
+  margin: 0;
+  block-size: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .canvas-wrapper {
+    inline-size: 95%;
+    block-size: 95%;
+    background-color: white;
+  }
+}

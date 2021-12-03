@@ -1,0 +1,14 @@
+{
+  "name": "blueprint-web-renderer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.1",
+    "parcel": "^2.0.1"
+  },
+  "dependencies": {
+    "konva": "^8.3.0",
+    "parse-css-color": "^0.1.2"
+  }
+}
