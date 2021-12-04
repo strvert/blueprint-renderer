@@ -1,6 +1,6 @@
 {
   "name": "blueprint-web-renderer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "konva": "^8.3.0",
     "parse-css-color": "^0.1.2"
   },
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "yarn parcel build"
