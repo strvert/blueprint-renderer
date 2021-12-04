@@ -2,9 +2,24 @@
   "name": "blueprint-web-renderer",
   "version": "0.0.4",
   "source": "src/index.ts",
+  "type": "module",
   "main": "dist/index.js",
-  "midule": "dist/module.js",
+  "module": "dist/module.js",
+  "global": "dist/global.js",
   "types": "dist/typs.d.ts",
+  "targets": {
+    "types": {},
+    "main": {
+      "outputFormat": "commonjs"
+    },
+    "module": {
+      "outputFormat": "esmodule"
+    },
+    "global": {
+      "outputFormat": "esmodule",
+      "includeNodeModules": true
+    }
+  },
   "license": "MIT",
   "devDependencies": {
     "@parcel/packager-ts": "^2.0.1",
