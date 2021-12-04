@@ -1,14 +1,35 @@
-import { Graph, createNode } from './index';
+import { Graph, createNode, buildBasicNode } from "./index";
 
 window.addEventListener("DOMContentLoaded", () => fitCanvas());
 window.addEventListener("resize", () => fitCanvas());
 
-const node1 = createNode({ x: 0, y: 0, nodeTitle: "Awesome" });
-const node2 = createNode({
+const node1 = buildBasicNode({
+  x: 0,
+  y: 0,
+  nodeTitle: "Spawn Emitter at Location",
+  pins: [
+    { name: "Exec", direction: "Input", type: "Exec" },
+    { name: "Exec", direction: "Output", type: "Exec" },
+    { name: "World Context Object", direction: "Input", type: "Object" },
+    { name: "Emitter Template", direction: "Input", type: "Object" },
+    { name: "Location", direction: "Input", type: "Vector" },
+    { name: "Rotation", direction: "Input", type: "Rotator" },
+    { name: "Scale", direction: "Input", type: "Vector" },
+    { name: "Auto Destroy", direction: "Input", type: "Boolean" },
+    { name: "Return Value", direction: "Output", type: "Object" },
+  ],
+});
+const node2 = buildBasicNode({
   x: 200,
   y: 600,
-  nodeColor: "#FF0000",
-  nodeTitle: "Awesome Event",
+  nodeTitle: "Spawn Force Feedback at Location",
+  pins: [
+    { name: "Exec", direction: "Input", type: "Exec" },
+    { name: "Exec", direction: "Output", type: "Exec" },
+    { name: "Force Feedback Effect", direction: "Input", type: "Object" },
+    { name: "Location", direction: "Input", type: "Vector" },
+    { name: "Return Value", direction: "Output", type: "Object" },
+  ],
 });
 
 const graph = new Graph("graph");
@@ -23,4 +44,3 @@ const fitCanvas = () => {
   graph.stage.width(canvasWrapper.clientWidth);
   graph.stage.height(canvasWrapper.clientHeight);
 };
-

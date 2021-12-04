@@ -1,4 +1,5 @@
-import { createNode } from "./classes/node";
-import { Graph } from "./classes/graph";
+import { createNode } from "./classes/nodes/NodeBase";
+import { buildBasicNode } from "./classes/nodes/BasicNodeBuilder";
+import { Graph } from "./classes/Graph";
 
-export { Graph, createNode };
+export { Graph, buildBasicNode, createNode };

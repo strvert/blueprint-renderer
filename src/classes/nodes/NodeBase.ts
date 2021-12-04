@@ -22,12 +22,23 @@ const pathRoundRect = (
   ctx.arcTo(l, t, r, t, rounds.lt);
 };
 
-export interface NodeOptions extends ShapeConfig {
+export interface NodeContentRenderer {
+  render: (ctx: Konva.Context, shape: Konva.Shape) => void;
+}
+
+export interface NodeOptionsBase {
+  x: number;
+  y: number;
+  width?: number;
+  height?: number;
   nodeColor?: string;
   nodeTitle?: string;
 }
 
-const createNode = (options: NodeOptions) => {
+const createNode = (
+  options: NodeOptionsBase,
+  contentRenderer?: NodeContentRenderer
+) => {
   const defaultOptions: NodeOptions = {
     nodeColor: "rgb(31, 149, 255)",
     nodeTitle: "unknown",
@@ -37,20 +48,20 @@ const createNode = (options: NodeOptions) => {
     height: 200,
   };
   const opts = { ...defaultOptions, ...options };
-  const nodeHeaderHeight = 26;
+  const nodeHeaderHeight = 27;
   const nodeOpacity = 0.95;
 
   const renderBase = (ctx: Konva.Context, shape: Konva.Shape) => {
     const width = shape.width();
     const height = shape.height();
-    const headerH = nodeHeaderHeight;
+    const headerH = shape.getAttr("headerHeight");
     const inColor = parse(opts.nodeColor);
     const headColor = `rgba(${inColor.values[0]}, ${inColor.values[1]}, ${inColor.values[2]}, ${nodeOpacity})`;
     const baseColor = `rgba(17, 17, 17, ${nodeOpacity})`;
 
     // Head
     ctx.save();
-    let g = ctx.createLinearGradient(0, -headerH * 2, width, headerH * 2);
+    const g = ctx.createLinearGradient(0, -headerH * 2, width, headerH * 2);
     g.addColorStop(0, headColor);
     g.addColorStop(0.7, headColor);
     g.addColorStop(1, baseColor);
@@ -90,6 +101,13 @@ const createNode = (options: NodeOptions) => {
     ctx.restore();
   };
 
+  const renderContent = (ctx: Konva.Context, shape: Konva.Shape) => {
+    const renderer = shape.getAttr("contentRenderer");
+    if (renderer) {
+      renderer.render(ctx, shape);
+    }
+  };
+
   const node = new Konva.Shape({
     x: opts.x,
     y: opts.y,
@@ -102,13 +120,14 @@ const createNode = (options: NodeOptions) => {
 
       const nodeTitle = shape.getAttr("nodeTitle");
       const titlePosX = 26;
-      ctx.font = "bold 13px san-serif";
+      ctx.font = "bold 12px san-serif";
       ctx.textAlign = "left";
       const mt = ctx.measureText(nodeTitle);
       this.width(titlePosX + mt.width + 32);
       // this.set({ width: titlePosX + mt.width + 32 });
 
       renderBase(ctx, this);
+      renderContent(ctx, this);
 
       ctx.fillStyle = "#fefefe";
       ctx.fillText(nodeTitle, titlePosX, 18);
@@ -127,6 +146,8 @@ const createNode = (options: NodeOptions) => {
     },
   });
   node.setAttr("nodeTitle", opts.nodeTitle);
+  node.setAttr("contentRenderer", contentRenderer);
+  node.setAttr("headerHeight", nodeHeaderHeight);
   node.className = "BPNode";
   node.on("mouseover", () => {
     document.body.style.cursor = "move";

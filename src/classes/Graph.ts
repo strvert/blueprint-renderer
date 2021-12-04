@@ -1,6 +1,6 @@
 import Konva from "konva";
 import { createUETransformer } from "./UETransformer";
-import { createGrid } from "./grid";
+import { createGrid } from "./Grid";
 
 interface Point {
   x: number;
@@ -92,7 +92,7 @@ export class Graph {
         this.panInfo.startLookPoint = this.looking;
       }
     });
-    this.stage.on("mousemove touchmove", (e) => {
+    this.stage.on("mousemove touchmove", (_e) => {
       if (this.panInfo.panning) {
         document.body.style.cursor = "grabbing";
         const currPoint = this.stage.getPointerPosition();

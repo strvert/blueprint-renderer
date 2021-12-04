@@ -22,7 +22,7 @@ const createGrid = (options?: GridOptions) => {
 
   const drawLine = (
     ctx: Konva.Context,
-    shape: Konva.Shape,
+    _shape: Konva.Shape,
     x1: number,
     y1: number,
     x2: number,
@@ -58,7 +58,7 @@ const createGrid = (options?: GridOptions) => {
 
     for (
       let x = Math.floor(-offset.x);
-      x < Math.floor((shape.width() - offset.x) / scaledSpan);
+      x <= Math.floor((shape.width() - offset.x) / scaledSpan);
       x += 1
     ) {
       drawLine(
@@ -76,7 +76,7 @@ const createGrid = (options?: GridOptions) => {
     }
     for (
       let y = Math.floor(-offset.y);
-      y < Math.floor((shape.height() - offset.y) / scaledSpan);
+      y <= Math.floor((shape.height() - offset.y) / scaledSpan);
       y += 1
     ) {
       drawLine(
