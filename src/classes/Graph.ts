@@ -34,8 +34,6 @@ export class Graph {
 
     this.stage = new Konva.Stage({
       container: elementId,
-      width: 500,
-      height: 500,
     });
     this.nodeLayer = new Konva.Layer({});
     this.stage.add(this.nodeLayer);
