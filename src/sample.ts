@@ -1,8 +1,5 @@
 // import { Graph, createNode, buildBasicNode } from "./index";
-import { buildBasicNode, Graph } from "./../dist/index";
-
-window.addEventListener("DOMContentLoaded", () => fitCanvas());
-window.addEventListener("resize", () => fitCanvas());
+import { buildBasicNode, Graph } from "./index";
 
 const node1 = buildBasicNode({
   x: 0,
@@ -33,15 +30,28 @@ const node2 = buildBasicNode({
   ],
 });
 
-const graph = new Graph("graph");
-graph.addNode(node1);
-graph.addNode(node2);
-
-const fitCanvas = () => {
+const init = () => {
   const canvasWrapper = document.querySelector(
     ".canvas-wrapper"
   ) as HTMLDivElement;
 
-  graph.stage.width(canvasWrapper.clientWidth);
-  graph.stage.height(canvasWrapper.clientHeight);
+  const graph = new Graph("graph", {
+    width: canvasWrapper.clientWidth,
+    height: canvasWrapper.clientHeight,
+  });
+  graph.addNode(node1);
+  graph.addNode(node2);
+
+  const fitCanvas = () => {
+    graph.stage.width(canvasWrapper.clientWidth);
+    graph.stage.height(canvasWrapper.clientHeight);
+  };
+  fitCanvas();
+  window.addEventListener("resize", () => fitCanvas());
 };
+
+if (document.readyState === "complete") {
+  init();
+} else {
+  window.addEventListener("DOMContentLoaded", () => init());
+}
