@@ -3,8 +3,8 @@
   "version": "0.0.5",
   "source": "src/index.ts",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/module.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "global": "dist/global.js",
   "types": "dist/typs.d.ts",
   "targets": {
