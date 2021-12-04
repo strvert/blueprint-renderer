@@ -1,7 +1,8 @@
 {
   "name": "blueprint-web-renderer",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.1",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.1",
@@ -11,5 +12,24 @@
     "image-promise": "^7.0.1",
     "konva": "^8.3.0",
     "parse-css-color": "^0.1.2"
-  }
+  },
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "yarn parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strvert/blueprint-web-renderer.git"
+  },
+  "keywords": [
+    "blueprint",
+    "unrealengine"
+  ],
+  "author": "strvert",
+  "bugs": {
+    "url": "https://github.com/strvert/blueprint-web-renderer/issues"
+  },
+  "homepage": "https://github.com/strvert/blueprint-web-renderer#readme",
+  "description": ""
 }
