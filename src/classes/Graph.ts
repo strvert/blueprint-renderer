@@ -48,13 +48,19 @@ export class Graph {
     this.transformer = createUETransformer();
     this.nodeLayer.add(this.transformer);
 
-    window.addEventListener("DOMContentLoaded", () => {
+    const initStage = () => {
       const elm = document.getElementById(elementId) as HTMLDivElement;
       elm.style.backgroundColor = "#272726";
       elm.addEventListener("contextmenu", (e) => e.preventDefault());
       this.grid.width(this.stage.width());
       this.grid.height(this.stage.height());
-    });
+    };
+    if (document.readyState === "complete") {
+      initStage();
+    } else {
+      window.addEventListener("DOMContentLoaded", () => initStage());
+    }
+
     window.addEventListener("resize", () => {
       this.grid.width(this.stage.width());
       this.grid.height(this.stage.height());
