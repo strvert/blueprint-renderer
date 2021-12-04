@@ -36,6 +36,8 @@ const graph = new Graph("graph");
 graph.addNode(node1);
 graph.addNode(node2);
 
+node1.on('')
+
 const fitCanvas = () => {
   const canvasWrapper = document.querySelector(
     ".canvas-wrapper"

@@ -8,6 +8,7 @@
     "parcel": "^2.0.1"
   },
   "dependencies": {
+    "image-promise": "^7.0.1",
     "konva": "^8.3.0",
     "parse-css-color": "^0.1.2"
   }

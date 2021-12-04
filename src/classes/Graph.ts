@@ -74,8 +74,8 @@ export class Graph {
       if (e.evt.button === 0) {
         if (e.target.className === "BPNode") {
           this.transformer.nodes([e.target]);
-          this.transformer.moveToTop();
-          e.target.moveToTop();
+          // this.transformer.moveToTop();
+          // e.target.moveToTop();
           return;
         }
         this.transformer.nodes([]);

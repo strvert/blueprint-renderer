@@ -41,7 +41,6 @@ const createNode = (
 ) => {
   const defaultOptions: NodeOptions = {
     nodeColor: "rgb(31, 149, 255)",
-    nodeTitle: "unknown",
     x: 0,
     y: 0,
     width: 200,
@@ -113,24 +112,24 @@ const createNode = (
     y: opts.y,
     width: opts.width,
     height: opts.height,
-    draggable: true,
+    draggable: false,
 
     sceneFunc: function (ctx, shape) {
       ctx.save();
 
-      const nodeTitle = shape.getAttr("nodeTitle");
-      const titlePosX = 26;
-      ctx.font = "bold 12px san-serif";
-      ctx.textAlign = "left";
-      const mt = ctx.measureText(nodeTitle);
-      this.width(titlePosX + mt.width + 32);
+      // const nodeTitle = shape.getAttr("nodeTitle");
+      // const titlePosX = 26;
+      // ctx.font = "bold 12px san-serif";
+      // ctx.textAlign = "left";
+      // const mt = ctx.measureText(nodeTitle);
+      // this.width(titlePosX + mt.width + 32);
       // this.set({ width: titlePosX + mt.width + 32 });
 
       renderBase(ctx, this);
       renderContent(ctx, this);
 
-      ctx.fillStyle = "#fefefe";
-      ctx.fillText(nodeTitle, titlePosX, 18);
+      // ctx.fillStyle = "#fefefe";
+      // ctx.fillText(nodeTitle, titlePosX, 18);
 
       ctx.restore();
 
@@ -145,7 +144,6 @@ const createNode = (
       };
     },
   });
-  node.setAttr("nodeTitle", opts.nodeTitle);
   node.setAttr("contentRenderer", contentRenderer);
   node.setAttr("headerHeight", nodeHeaderHeight);
   node.className = "BPNode";
