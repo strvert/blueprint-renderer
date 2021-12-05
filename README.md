@@ -2,6 +2,8 @@
 
 ブラウザ上で動作するUnrealEngineのBlueprintのレンダラ。開発中。
 
+![sample image](https://raw.githubusercontent.com/strvert/blueprint-renderer/master/sample_image.jpg)
+
 ## 機能
 
 - [x] ノードフレーム(ノードの基本形状)の描画
