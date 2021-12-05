@@ -1,5 +1,5 @@
 {
-  "name": "blueprint-web-renderer",
+  "name": "blueprint-renderer",
   "version": "0.0.14",
   "source": "src/index.ts",
   "main": "dist/main.js",
@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/strvert/blueprint-web-renderer.git"
+    "url": "git+https://github.com/strvert/blueprint-renderer.git"
   },
   "keywords": [
     "blueprint",
@@ -49,8 +49,8 @@
   ],
   "author": "strvert",
   "bugs": {
-    "url": "https://github.com/strvert/blueprint-web-renderer/issues"
+    "url": "https://github.com/strvert/blueprint-renderer/issues"
   },
-  "homepage": "https://github.com/strvert/blueprint-web-renderer#readme",
-  "description": ""
+  "homepage": "https://github.com/strvert/blueprint-renderer#readme",
+  "description": "A Blueprint renderer for UnrealEngine that runs in the browser."
 }
