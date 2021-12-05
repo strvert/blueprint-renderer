@@ -22,7 +22,10 @@ export class Graph {
   private looking: { x: number; y: number };
   private scale: number;
 
-  constructor(elementId: string, size?: { width: number; height: number }) {
+  constructor(
+    element: string | HTMLDivElement,
+    size?: { width: number; height: number }
+  ) {
     this.looking = { x: 0, y: 0 };
     this.panInfo = {
       panning: false,
@@ -33,7 +36,7 @@ export class Graph {
     this.scale = 1;
 
     this.stage = new Konva.Stage({
-      container: elementId,
+      container: element,
       ...size,
     });
     this.nodeLayer = new Konva.Layer();
@@ -51,7 +54,10 @@ export class Graph {
     this.transformer = createUETransformer();
     this.nodeLayer.add(this.transformer);
 
-    const elm = document.getElementById(elementId) as HTMLDivElement;
+    const elm =
+      typeof element === "string"
+        ? (document.getElementById(element) as HTMLDivElement)
+        : element;
     elm.style.backgroundColor = "#272726";
     elm.addEventListener("contextmenu", (e) => e.preventDefault());
     this.grid.width(this.stage.width());
