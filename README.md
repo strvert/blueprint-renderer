@@ -2,6 +2,8 @@
 
 ブラウザ上で動作するUnrealEngineのBlueprintのレンダラ。開発中。
 
+![sample image](https://raw.githubusercontent.com/strvert/blueprint-renderer/master/sample_image.jpg)
+
 ## 機能
 
 - [x] ノードフレーム(ノードの基本形状)の描画
@@ -12,4 +14,5 @@
 - [x] グラフの拡大・縮小
 - [ ] ワイヤの描画
 - [ ] 非接続状態ピンの直接指定パラメータの描画
-
+- [ ] グラフのテキストデータ(UEからコピーされるもの)のパース　→　https://github.com/strvert/k2node-rs
+- [ ] グラフのテキストデータからのノード構築
