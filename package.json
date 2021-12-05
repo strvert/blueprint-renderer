@@ -1,6 +1,6 @@
 {
   "name": "blueprint-renderer",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "module": "dist/module.js",
